@@ -11,4 +11,6 @@ object FirstSparkApp extends App {
   val df = spark.read.text("build.sbt")
 
   df.show
+  df.write.text("chkddsadsask.txt")
+  spark.read.text("chkddsadsask.txt")
 }
