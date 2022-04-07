@@ -16,7 +16,33 @@ object Wed extends App {
   //  - Values should all be UPPER case
   // 3. DataFrame.show
   import org.apache.spark.sql.functions._
-  val df = spark.read.option("delimiter", ",").option("header", "true").csv("sample2.csv")
-  val df1 = df.withColumn("Name", upper(df("Name")))
- df1.show
+  val dataframe = spark
+    .read
+    .option("delimiter", ",")
+    .option("header", "true")
+    .csv("sample2.csv")
+
+//  val dfUpCase = dataframe
+//    .withColumn("Name", upper(dataframe("Name")))
+
+//  dataframe.show
+//  val firstMethod = dataframe
+//    .filter(dataframe("Name") === "Paul Bako")
+
+
+//  val secondMethod = dataframe
+//    .withColumn("TeamPosition", concat(col("\"Team\""), lit(','), col("\"Position\"")))
+
+//  val thirdMethod = dataframe.groupBy("Team").avg("Age").show
+//  val fourthMethod = dataframe.groupBy("Team").count.show
+  val fourthMethod = dataframe.groupBy("Team").sum("Team").show
+
+//  dataframe
+//    .select(concat(col("Team"), lit(','), col("Position"))
+//      .as("TeamPos"))
+
+  // Exercise: Use command line for the CSV to read
+  // Jesli podano pojedynczy parametr na linii polecen, uzyj go jako sciezki do CSV
+  // else uzyj domyslnej sciezki (np. ../datasets/people.csv)
+  val path = if(args.length > 0) args(0) else "sample2.csv"
 }
