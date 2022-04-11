@@ -34,8 +34,9 @@ object Wed extends App {
 //    .withColumn("TeamPosition", concat(col("\"Team\""), lit(','), col("\"Position\"")))
 
 //  val thirdMethod = dataframe.groupBy("Team").avg("Age").show
+//  working too:
 //  val fourthMethod = dataframe.groupBy("Team").count.show
-  val fourthMethod = dataframe.groupBy("Team").sum("Team").show
+  val fifthMethod = dataframe.groupBy("Team").sum("Age").toDF.show
 
 //  dataframe
 //    .select(concat(col("Team"), lit(','), col("Position"))

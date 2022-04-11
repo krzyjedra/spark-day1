@@ -17,6 +17,7 @@ object SparkEx1JL extends App {
     ("1$", "$"),
     ("1000.00^Test_string", "^")).toDF("VALUES", "Delimiter")
 
+  // working too:
   //    dept.withColumn("Delimiter",concat(lit("\\"),$"Delimiter"))
   //    .withColumn("split_values",expr("split(VALUES, Delimiter)"))
   //    .show(false)
